@@ -1,8 +1,8 @@
 {
   "name": "admin-quasar",
   "version": "3.0.0",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "description": "Data Mapping App",
+  "productName": "Renuity App",
   "author": "msolanogithub <msolano@imaginacolombia.com>",
   "private": true,
   "scripts": {

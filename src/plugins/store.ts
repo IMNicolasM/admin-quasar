@@ -20,6 +20,9 @@ const methods = {
   getMediaSetting (name: string)
   {
     return store.getters['qsiteApp/getSettingMediaByName'](name);
+  },
+  getCrud(uid: string) {
+    return store.state?.qcrudComponent?.component[uid] || {}
   }
 };
 

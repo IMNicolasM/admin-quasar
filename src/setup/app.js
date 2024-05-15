@@ -7,12 +7,12 @@ tagsToParceHost.forEach(tagToReplace => host = host.replace(tagToReplace, ''));
 let loadFrom = host.split('/')[1];
 
 export default {
-  //baseUrl: 'https://ibuilder.ozonohosting.com',
+  baseUrl: 'https://n8ndtm.eastus.cloudapp.azure.com/webhook/78ccce39-3ea4-4dd1-bdf2-ef965be48350',
   version: pjson.version,//Package version
   mode: (loadFrom && (['iadmin', 'ipanel'].indexOf(loadFrom) != -1)) ? loadFrom : 'iadmin',//Define load mode
   validateModeAccess: true,//Define if validate app mode access
   forceRoleAndDepartment: false,//Force to select role and department
-  //useLocalTranslations: true,//Define from where use the translations
+  useLocalTranslations: true,//Define from where use the translations
   //UI Languages
   languages: {
     default: 'es',
@@ -23,34 +23,11 @@ export default {
     'qcrud',
     'quser',
     'qnotification',
-    'qcommerce',
-    'qblog',
-    'qform',
-    'qplan',
-    'qad',
-    'qdocument',
-    'qplace',
-    'qcheckin',
-    'qlocations',
-    'qappointment',
-    'qbooking',
-    'qgamification',
-    'qevent',
-    'qpage',
-    'qredirect',
-    'qmenu',
-    'qmedia',
-    'qslider',
     'qchat',
-    'qqreable',
+    'qmapper',
     'qtranslation',
-    'qrequestable',
-    'qauction',
-    'qbuilder',
     'qsite',
-    'qcredit',
-    'qoffline',
-    'qwebhook'
+    'qoffline'
   ],
   //Cache
   saveCache: {
@@ -64,8 +41,7 @@ export default {
       'org-wizard-data',
       'org-wizard-categories',
       'org-wizard-plans',
-      'org-wizard-step',
-      'api.version'
+      'org-wizard-step'
     ],
     logout: [
       'offlineRequests',
@@ -77,8 +53,7 @@ export default {
       'org-wizard-data',
       'org-wizard-categories',
       'org-wizard-plans',
-      'org-wizard-step',
-      'api.version'
+      'org-wizard-step'
     ]
   },
   //Cache Time in Seconds
@@ -92,5 +67,6 @@ export default {
     icon: 'fas fa-home',
     color: 'primary',
     route: 'app.home'
-  }
+  },
+  disableTours: true
 };
