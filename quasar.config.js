@@ -66,6 +66,12 @@ module.exports = configure(function(ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-build
     build: {
+      vueLoaderOptions: {
+        // Options for vue-template-compiler
+        compilerOptions: {
+          isCustomElement: tag => tag.startsWith('vue-advanced-chat') || tag.startsWith('emoji-picker')
+        }
+      },
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       extendWebpack(config) {
         if (!config.optimization) {
@@ -226,7 +232,8 @@ module.exports = configure(function(ctx) {
     pwa: {
       workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {
-        maximumFileSizeToCacheInBytes: 7000000
+        maximumFileSizeToCacheInBytes: 1024 * 1024 * 10, // 10MB
+        exclude: [/node_modules/, /manifest\.json/],
       }, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
