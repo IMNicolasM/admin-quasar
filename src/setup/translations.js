@@ -1,34 +1,36 @@
 
+import messagesLocal from 'src/modules/qsite/_i18n/JsonLocal/i18n.json';
 class loadTranslations {
   constructor() {
     this.languages = {}
     this.modules = config('app.modules')
     this.availablesLanguages = config('app.languages.availables')
-    this.availablesLanguages.forEach((lang) => {
-      this.loadModulesTranslations(lang)
+    this.availablesLanguages.forEach((language) => {
+      this.loadModulesTranslations(language)
     })
   }
 
-  //Load Module apiRoutes
-  loadModulesTranslations(lang) {
-    this.languages[lang] = {}
+  //Load Module
+  loadModulesTranslations(language) {
+    const lang = language.split('-')[0]    //convert 'en-us' => 'en'
+
+    this.languages[lang] = messagesLocal[lang] || {}
       this.modules.forEach(name => {
         let translations = false  
         //Search module in project
         try {            
-          translations = require(`src/modules/${name}/_i18n/${lang}/index`).default
+          translations = require(`src/modules/${name}/_i18n/${language}/index`).default
           if(translations){
-            this.languages[lang][name] = translations
-          }          
-        } catch (e) {
-          //console.log(e)
-        }
+            Object.keys(translations).forEach((key) => {
+              this.languages[lang][key] = {...this.languages[lang][key], ...translations[key]}
+            })
+          }
+        } catch (e) {}
     })
   }
 }
 
 //Define new class
 const translations = new loadTranslations()
-console.warn(translations.languages)
 //response
 export default translations.languages

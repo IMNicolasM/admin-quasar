@@ -7,16 +7,13 @@ import pluginI18n from 'src/plugins/i18n.ts';
 import { messageCompiler } from 'src/modules/qsite/_i18n/master/formats/customFormats';
 import numberFormats from 'src/modules/qsite/_i18n/master/formats/currencyFormats';
 import datetimeFormats from 'src/modules/qsite/_i18n/master/formats/dateTimeFormats';
-//import messagesLocal from 'src/modules/qsite/_i18n/JsonLocal/i18n.json';
-import testMessagesLocal from 'src/setup/translations';
+import messagesLocal from 'src/setup/translations';
 
 export default boot(async ({ app, store }) => {
   //Request messages
   const useLocalTranslations = config('app.useLocalTranslations');
   const messagesServer = useLocalTranslations ? {} : await store.dispatch('qtranslationMaster/GET_TRANSLATIONS', { refresh: false });
-  //const messages = useLocalTranslations ? messagesLocal : messagesServer;
-  const messages = useLocalTranslations ? testMessagesLocal : messagesServer;
-  console.warn('testMessagesLocal', testMessagesLocal)
+  const messages = useLocalTranslations ? messagesLocal : messagesServer;
   //===== Get default language
   //From URL
   let defaultLanguage = helper.getLocaleRoutePath(window.location.hash);
