@@ -1,5 +1,4 @@
 
-import messagesLocal from 'src/modules/qsite/_i18n/JsonLocal/i18n.json';
 class loadTranslations {
   constructor() {
     this.languages = {}
@@ -14,7 +13,7 @@ class loadTranslations {
   loadModulesTranslations(language) {
     const lang = language.split('-')[0]    //convert 'en-us' => 'en'
 
-    this.languages[lang] = messagesLocal[lang] || {}
+    this.languages[lang] = {}
       this.modules.forEach(name => {
         let translations = false  
         //Search module in project
