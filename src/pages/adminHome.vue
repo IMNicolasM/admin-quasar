@@ -16,9 +16,10 @@
         <!-- QuickCards -->
         <div id="quickCardsContent" class="col-12">
           <div class="row q-col-gutter-x-md">
-            <div v-for="(groupQuickCard, key) in quickCards" :key="key" class="col-12 col-lg-6">
-              <div class="row q-col-gutter-y-md full-width">
-                <div v-for="(item, keyItem) in groupQuickCard" :key="keyItem" class="col-12">
+            <div v-for="(groupQuickCard, key) in quickCards" :key="key" class="col-12">
+              <div class="row q-col-gutter-y-md full-
+              width">
+                <div v-for="(item, keyItem) in groupQuickCard" :key="keyItem" :class="item.col || 'col-12 col-lg-6'">
                   <component :is="item.component" :key="`component${keyItem}`" v-bind="item.props || {}" />
                 </div>
               </div>
